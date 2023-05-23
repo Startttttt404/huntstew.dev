@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(
     `Hello from Cloud Run! The container started successfully and is listening for HTTP requests on ${PORT}`
