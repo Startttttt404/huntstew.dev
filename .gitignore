@@ -105,3 +105,10 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Firebase
+.firebase
+.firebaserc
+firebase.json
+firebase-hosting-merge.yml
+firebase-hosting-pull-request.yml
