@@ -1,11 +1,11 @@
 const express = require('express');
+const path = require('path')
 
 const app = express();
 
 app.get('/', async (req, res) => {
-     res.statusaCode = 200;
-     res.setHeader('Content-Type', 'text/plain');
-     res.end('Hello World!');
+     res.statusCode = 200;
+     res.sendFile(path.join(__dirname+'/index.html'))
 });
 
 const PORT = process.env.PORT || 8080;
