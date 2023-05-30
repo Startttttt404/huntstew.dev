@@ -9,45 +9,46 @@ app.use(express.static(__dirname + '/public'));
 app.use(useragent.express())
 
 app.get('/', async (req, res) => {
+  var beginstring = '/views/desktop'
+  var endstring = 'index.html'
   if(req.useragent.isMobile){
-    fs.readFile(__dirname + '/views/mobile/indexMob.html', 'utf-8', (err, text) => {
-      res.statusCode = 200
-      res.end(text)
-    });
+    beginstring = '/views/mobile'
+    endstring = "indexMob.html"
   }
-  else{
-    fs.readFile(__dirname + '/views/desktop/index.html', 'utf-8', (err, text) => {
-      res.statusCode = 200
-      res.end(text)
-    });
+
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
+    if (err){
+      console.log(err)
+    }
+    else{
+      res.writeHead(200, {
+        'Content-Length': Buffer.byteLength(html),
+        'Content-Type': 'text/html'
+      });
+      res.end(html)
+    }
+  });
+});
+
+app.get('*', async (req, res) => {
+  var beginstring = '/views/desktop'
+  var endstring = '.html'
+  if(req.useragent.isMobile){
+    beginstring = '/views/mobile'
+    endstring = "Mob.html"
   }
-});
 
-app.get('/about-me', async (req, res) => {
-  fs.readFile(__dirname + '/views/desktop/about-me.html', 'utf-8', (err, text) => {
-     res.statusCode = 200
-     res.end(text)
-  });
-});
-
-app.get('/projects', async (req, res) => {
-  fs.readFile(__dirname + '/views/desktop/projects.html', 'utf-8', (err, text) => {
-     res.statusCode = 200
-     res.end(text)
-  });
-});
-
-app.get('/resume', async (req, res) => {
-  fs.readFile(__dirname + '/views/desktop/resume.html', 'utf-8', (err, text) => {
-     res.statusCode = 200
-     res.end(text)
-  });
-});
-
-app.get('/contact', async (req, res) => {
-  fs.readFile(__dirname + '/views/contact.html', 'utf-8', (err, text) => {
-     res.statusCode = 200
-     res.end(text)
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
+    if (err){
+      res.end("error: 404")
+    }
+    else{
+      res.writeHead(200, {
+        'Content-Length': Buffer.byteLength(html),
+        'Content-Type': 'text/html'
+      });
+      res.end(html)
+    }
   });
 });
 
