@@ -1,22 +1,22 @@
-const express = require('express');
-const fs = require('fs')
-const path = require('path')
+var express = require('express');
+var fs = require('fs')
+var path = require('path')
 
-const app = express();
-const useragent = require('express-useragent');
+var app = express();
+var useragent = require('express-useragent');
 
 app.use(express.static(__dirname + '/public'));
 app.use(useragent.express())
 
 app.get('/', async (req, res) => {
   if(req.useragent.isMobile){
-    fs.readFile(__dirname + '/public/indexMob.html', 'utf-8', (err, text) => {
+    fs.readFile(__dirname + '/views/indexMob.html', 'utf-8', (err, text) => {
       res.statusCode = 200
       res.end(text)
     });
   }
   else{
-    fs.readFile(__dirname + '/public/index.html', 'utf-8', (err, text) => {
+    fs.readFile(__dirname + '/views/index.html', 'utf-8', (err, text) => {
       res.statusCode = 200
       res.end(text)
     });
@@ -24,28 +24,28 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/about-me', async (req, res) => {
-  fs.readFile(__dirname + '/public/about-me.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/about-me.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
 });
 
 app.get('/projects', async (req, res) => {
-  fs.readFile(__dirname + '/public/projects.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/projects.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
 });
 
 app.get('/resume', async (req, res) => {
-  fs.readFile(__dirname + '/public/resume.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/resume.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
 });
 
 app.get('/contact', async (req, res) => {
-  fs.readFile(__dirname + '/public/contact.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/contact.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
