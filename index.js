@@ -40,7 +40,7 @@ app.get('*', async (req, res) => {
 
   fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
     if (err){
-      console.log(err)
+      res.end("error: 404")
     }
     else{
       res.writeHead(200, {
