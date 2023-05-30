@@ -9,14 +9,14 @@ app.use(express.static(__dirname + '/public'));
 app.use(useragent.express())
 
 app.get('/', async (req, res) => {
-  if(req.useragent.isMobile){
-    fs.readFile(__dirname + '/views/indexMob.html', 'utf-8', (err, text) => {
+  if(!req.useragent.isMobile){
+    fs.readFile(__dirname + '/views/mobile/indexMob.html', 'utf-8', (err, text) => {
       res.statusCode = 200
       res.end(text)
     });
   }
   else{
-    fs.readFile(__dirname + '/views/index.html', 'utf-8', (err, text) => {
+    fs.readFile(__dirname + '/views/desktop/index.html', 'utf-8', (err, text) => {
       res.statusCode = 200
       res.end(text)
     });
@@ -24,28 +24,28 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/about-me', async (req, res) => {
-  fs.readFile(__dirname + '/views/about-me.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/desktop/about-me.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
 });
 
 app.get('/projects', async (req, res) => {
-  fs.readFile(__dirname + '/views/projects.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/desktop/projects.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
 });
 
 app.get('/resume', async (req, res) => {
-  fs.readFile(__dirname + '/views/resume.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/desktop/resume.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
 });
 
 app.get('/contact', async (req, res) => {
-  fs.readFile(__dirname + '/views/contact.html', 'utf-8', (err, text) => {
+  fs.readFile(__dirname + '/views/desktop/contact.html', 'utf-8', (err, text) => {
      res.statusCode = 200
      res.end(text)
   });
