@@ -4,7 +4,7 @@ body, html {
 }
 
 .bar {
-    font-size: 1.8vw;
+    font-size: 3vw;
 }
 
 .socials {
@@ -13,23 +13,22 @@ body, html {
 }
 
 .welcome {
-    font-size: 4vh;
     text-align: left; 
-    margin-left: 4vw; 
-    margin-top: 20vh;
+    margin-left: 6vw; 
+    margin-top: 6vh;
     position: fixed;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 8vw;
   }
   
 h2 {
-    font-size: 1.875em;
+    font-size: 7vw;
 }
 
 h3 {
-    font-size: 1.6em;;
+    font-size: 6.5avw;
 }
 
 .bottomsection{
@@ -39,9 +38,9 @@ h3 {
 }
 
 .face {
-    height: 82vh;
-    min-width: 100%;
-    text-align: right;
+    position: fixed;
+    bottom: 0;
+    min-width: 120%;
 }
 
 .bottombar {
