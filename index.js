@@ -2,7 +2,8 @@ const express = require('express');
 const fs = require('fs')
 const path = require('path')
 const useragent = require('express-useragent');
-const parse = require('node-html-parser').parse;
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.get('/', async (req, res) => {
       console.log(err)
     }
     else{
+      console.log(htmlString)
       res.send(htmlString)
     }
   });
@@ -35,21 +37,29 @@ app.get('/projects', async (req, res) => {
     endstring = "Mob.html"
   }
 
-  const repos = await(fetch('https://api.github.com/users/startttttt404/repos')).then(response => response.json())
+  const reposJson = await(fetch('https://api.github.com/users/startttttt404/repos')).then(response => response.json())
+  console.log(reposJson)
 
   fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
     if (err){
       console.log(err)
     }
     else{
-      const document = parse(htmlString)
-      const repoList = document.querySelector('#repoList')
-      for(const repo of repos){
-        repoList.appendChild(parse(
-          '<li><p>Name: ' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+      const dom = new JSDOM(htmlString)
+      const repoList = dom.window.document.body.querySelector('#repoList')
+      try{
+        for(const repo of reposJson){
+          repoList.appendChild(JSDOM.fragment(
+            '<li><p>Name: ' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+          ))
+        }
+      }
+      catch{
+        repoList.appendChild(JSDOM.fragment(
+          '<li><p>Unable to parse repo info, probably unauth API limit</p></li>'
         ))
       }
-      res.send(document.outerHTML)
+      res.send(dom.serialize())
     }
   });
 });
