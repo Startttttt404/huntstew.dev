@@ -1,9 +1,10 @@
-var express = require('express');
-var fs = require('fs')
-var path = require('path')
+const express = require('express');
+const fs = require('fs')
+const path = require('path')
+const useragent = require('express-useragent');
+const parse = require('node-html-parser').parse;
 
 var app = express();
-var useragent = require('express-useragent');
 
 app.use(express.static(__dirname + '/public'));
 app.use(useragent.express())
@@ -16,16 +17,39 @@ app.get('/', async (req, res) => {
     endstring = "indexMob.html"
   }
 
-  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
     if (err){
       console.log(err)
     }
     else{
-      res.writeHead(200, {
-        'Content-Length': Buffer.byteLength(html),
-        'Content-Type': 'text/html'
-      });
-      res.end(html)
+      res.send(htmlString)
+    }
+  });
+});
+
+app.get('/projects', async (req, res) => {
+  var beginstring = '/views/desktop'
+  var endstring = '.html'
+  if(req.useragent.isMobile){
+    beginstring = '/views/mobile'
+    endstring = "Mob.html"
+  }
+
+  const repos = await(fetch('https://api.github.com/users/startttttt404/repos')).then(response => response.json())
+
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
+    if (err){
+      console.log(err)
+    }
+    else{
+      const document = parse(htmlString)
+      const repoList = document.querySelector('#repoList')
+      for(const repo of repos){
+        repoList.appendChild(parse(
+          '<li><p>Name: ' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+        ))
+      }
+      res.send(document.outerHTML)
     }
   });
 });
@@ -38,16 +62,12 @@ app.get('*', async (req, res) => {
     endstring = "Mob.html"
   }
 
-  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
     if (err){
-      res.end("error: 404")
+      res.status(404).end("error: 404")
     }
     else{
-      res.writeHead(200, {
-        'Content-Length': Buffer.byteLength(html),
-        'Content-Type': 'text/html'
-      });
-      res.end(html)
+      res.send(htmlString)
     }
   });
 });
