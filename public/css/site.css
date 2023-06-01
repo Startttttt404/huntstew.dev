@@ -36,6 +36,10 @@ h3 {
     font-size: 8.5vh;
 }
 
+h4 {
+    font-size: 6vh;
+}
+
 .bottomsection{
     position: fixed;
     bottom: 0;
@@ -48,17 +52,7 @@ h3 {
     text-align: right;
 }
 
-.bottombar {
-    width: 100%;
-    background-color: #FDB196;
-}
-
-.midbar {
-    width: 100%;
-    background-color: #FAD2A7;
-}
-
-.topbar {
-    width: 100%;
-    background-color: #FBEAC8;
+.vertical-center {
+    min-height: 80vh;
+    min-width: 100vw;
 }

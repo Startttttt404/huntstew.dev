@@ -50,6 +50,10 @@ app.get('/projects', async (req, res) => {
   });
 });
 
+app.get('/public/HunterStewartResume.docx', async (req, res) => {
+  res.sendFile(__dirname + '/public/HunterStewartResume.docx')
+});
+
 app.get('*', async (req, res) => {
   var beginstring = '/views/desktop'
   var endstring = '.html'
