@@ -36,13 +36,13 @@ app.get('/projects', async (req, res) => {
       try{
         for(const repo of reposJson){
           repoList.appendChild(JSDOM.fragment(
-            '<li><p>Name: ' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+            '<li><p>' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
           ))
         }
       }
       catch{
         repoList.appendChild(JSDOM.fragment(
-          '<li><p>Unable to parse repo info, probably unauth API limit</p></li>'
+          '<li class="list-group-item"><p>Unable to parse repo info, probably unauth API limit</p></li>'
         ))
       }
       res.send(dom.serialize())
