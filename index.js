@@ -10,23 +10,9 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(useragent.express())
 
-app.get('/', async (req, res) => {
-  var beginstring = '/views/desktop'
-  var endstring = 'index.html'
-  if(req.useragent.isMobile){
-    beginstring = '/views/mobile'
-    endstring = "indexMob.html"
-  }
-
-  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
-    if (err){
-      console.log(err)
-    }
-    else{
-      console.log(htmlString)
-      res.send(htmlString)
-    }
-  });
+app.get('/', async (req, res, next) => {
+  req.url = '/index'
+  next()
 });
 
 app.get('/projects', async (req, res) => {
