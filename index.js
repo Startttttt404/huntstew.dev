@@ -36,7 +36,7 @@ app.get('/projects', async (req, res) => {
       try{
         for(const repo of reposJson){
           repoList.appendChild(JSDOM.fragment(
-            '<li><p><img src="' + repo.html_url + '/blob/main/resume-site-icon.svg></img>' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+            '<li class="list-group-item"><p><img src="https://raw.githubusercontent.com/Startttttt404/'+ repo.name + '/main/resume-site-icon.svg"</img>' + repo.name + '<br>' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
           ))
         }
       }
@@ -50,7 +50,7 @@ app.get('/projects', async (req, res) => {
   });
 });
 
-app.get('/public/HunterStewartResume.docx', async (req, res) => {
+app.get('/resume/download', async (req, res) => {
   res.sendFile(__dirname + '/public/HunterStewartResume.docx')
 });
 
