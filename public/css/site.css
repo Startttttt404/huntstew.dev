@@ -1,6 +1,7 @@
 body, html {
     margin: 0;
     padding: 0;
+    font-family: Lato;
 }
 
 .bar {
@@ -13,23 +14,34 @@ body, html {
 }
 
 .welcome {
-    font-size: 4vh;
     text-align: left; 
     margin-left: 4vw; 
     margin-top: 20vh;
     position: fixed;
 }
 
+.section-name {
+    text-decoration: underline;
+}
+
 h1 {
-    font-size: 2.5em;
+    font-size: 10vh;
   }
   
 h2 {
-    font-size: 1.875em;
+    font-size: 9vh;
 }
 
 h3 {
-    font-size: 1.6em;;
+    font-size: 8.5vh;
+}
+
+h4 {
+    font-size: 6vh;
+}
+
+h5 {
+    font-size: 4vh;
 }
 
 .bottomsection{
@@ -44,17 +56,11 @@ h3 {
     text-align: right;
 }
 
-.bottombar {
-    width: 100%;
-    background-color: #FDB196;
+.vertical-center {
+    min-height: 60vh;
+    min-width: 100vw;
 }
 
-.midbar {
-    width: 100%;
-    background-color: #FAD2A7;
-}
-
-.topbar {
-    width: 100%;
-    background-color: #FBEAC8;
+.column-gap-20{
+    column-gap: 20vw;
 }

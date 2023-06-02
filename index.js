@@ -1,33 +1,57 @@
-var express = require('express');
-var fs = require('fs')
-var path = require('path')
+const express = require('express');
+const fs = require('fs')
+const path = require('path')
+const useragent = require('express-useragent');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 var app = express();
-var useragent = require('express-useragent');
 
 app.use(express.static(__dirname + '/public'));
 app.use(useragent.express())
 
-app.get('/', async (req, res) => {
+app.get('/', async (req, res, next) => {
+  req.url = '/index'
+  next()
+});
+
+app.get('/projects', async (req, res) => {
   var beginstring = '/views/desktop'
-  var endstring = 'index.html'
+  var endstring = '.html'
   if(req.useragent.isMobile){
     beginstring = '/views/mobile'
-    endstring = "indexMob.html"
+    endstring = "Mob.html"
   }
 
-  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
+  const reposJson = await(fetch('https://api.github.com/users/startttttt404/repos')).then(response => response.json())
+  console.log(reposJson)
+
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
     if (err){
       console.log(err)
     }
     else{
-      res.writeHead(200, {
-        'Content-Length': Buffer.byteLength(html),
-        'Content-Type': 'text/html'
-      });
-      res.end(html)
+      const dom = new JSDOM(htmlString)
+      const repoList = dom.window.document.body.querySelector('#repoList')
+      try{
+        for(const repo of reposJson){
+          repoList.appendChild(JSDOM.fragment(
+            '<li><p><img src="' + repo.html_url + '/blob/main/resume-site-icon.svg></img>' + repo.name + '<br>Description: ' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+          ))
+        }
+      }
+      catch{
+        repoList.appendChild(JSDOM.fragment(
+          '<li class="list-group-item"><p>Unable to parse repo info, probably unauth API limit</p></li>'
+        ))
+      }
+      res.send(dom.serialize())
     }
   });
+});
+
+app.get('/public/HunterStewartResume.docx', async (req, res) => {
+  res.sendFile(__dirname + '/public/HunterStewartResume.docx')
 });
 
 app.get('*', async (req, res) => {
@@ -38,16 +62,12 @@ app.get('*', async (req, res) => {
     endstring = "Mob.html"
   }
 
-  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, html) => {
+  fs.readFile(__dirname + beginstring + req.path + endstring, 'utf-8', (err, htmlString) => {
     if (err){
-      res.end("error: 404")
+      res.status(404).end("error: 404")
     }
     else{
-      res.writeHead(200, {
-        'Content-Length': Buffer.byteLength(html),
-        'Content-Type': 'text/html'
-      });
-      res.end(html)
+      res.send(htmlString)
     }
   });
 });
