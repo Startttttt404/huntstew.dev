@@ -64,3 +64,14 @@ h5 {
 .column-gap-20{
     column-gap: 20vw;
 }
+
+.project-list{
+    min-width: 80vw;
+}
+
+.project-item{
+    font-size: 3vh;
+    height: 75vh;
+    width: 23vw;
+    background-color: rgba(255, 255, 255, 0.5);
+}
