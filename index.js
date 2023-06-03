@@ -36,7 +36,7 @@ app.get('/projects', async (req, res) => {
       try{
         for(const repo of reposJson){
           repoList.appendChild(JSDOM.fragment(
-            '<li class="list-group-item"><p><img src="https://raw.githubusercontent.com/Startttttt404/'+ repo.name + '/main/resume-site-icon.svg"</img>' + repo.name + '<br>' + repo.description + '<br><a href="' + repo.html_url + '">Link</a></p></li>'
+            '<li class="list-group-item project-item"><p><img src="https://raw.githubusercontent.com/Startttttt404/'+ repo.name + '/main/resume-site-icon.svg"</img> <a href="' + repo.html_url + '"><u><b>' + repo.name + '</b></u></a><br>' + repo.description + '</p></li>'
           ))
         }
       }
