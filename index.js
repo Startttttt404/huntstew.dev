@@ -51,7 +51,7 @@ app.get('/projects', async (req, res) => {
 });
 
 app.get('/resume/download', async (req, res) => {
-  res.sendFile(__dirname + '/public/HunterStewartResume.docx')
+  res.sendFile(__dirname + '/HunterStewartResume.docx')
 });
 
 app.get('*', async (req, res) => {
