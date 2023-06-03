@@ -51,6 +51,7 @@ app.get('/projects', async (req, res) => {
 });
 
 app.get('/resume/download', async (req, res) => {
+  console.log("Attempting to get file from:" + __dirname + '/public/HunterStewartResume.docx')
   res.sendFile(__dirname + '/public/HunterStewartResume.docx')
 });
 
