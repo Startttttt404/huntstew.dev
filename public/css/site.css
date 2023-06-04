@@ -1,7 +1,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Lato;
+    font-family: Helvetica, sans-serif;
 }
 
 .bar {
@@ -16,7 +16,7 @@ body, html {
 .welcome {
     text-align: left; 
     margin-left: 4vw; 
-    margin-top: 20vh;
+    margin-top: 18vh;
     position: fixed;
 }
 

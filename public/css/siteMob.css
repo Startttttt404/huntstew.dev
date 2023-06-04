@@ -3,10 +3,8 @@ body, html {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    font-family: Lato;
+    font-family: Helvetica, sans-serif;
     overflow-x: hidden;
-    font-weight: 900; 
-    font-style: normal;
 }
 
 body{
@@ -25,7 +23,7 @@ body{
 .welcome {
     text-align: left; 
     margin-left: 12vw; 
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
 
 .section-name {
