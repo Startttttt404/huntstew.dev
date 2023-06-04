@@ -52,9 +52,7 @@ app.get('/projects', async (req, res) => {
 
 app.get('/download', async (req, res) => {
   console.log("Attempting to get file from:" + __dirname + '/HunterStewartResume.docx')
-  res.download(__dirname + '/public/HunterStewartResume.docx', "HunterStewartResume.docx", function (err) {
-    res.send("Sorry, seems to be some error with the download!")
-  })
+  res.download(__dirname + '/public/HunterStewartResume.docx', "HunterStewartResume.docx")
 });
 
 app.get('*', async (req, res) => {
