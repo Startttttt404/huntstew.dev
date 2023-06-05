@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    font-family: Lato;
+    font-family: Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
@@ -22,9 +22,8 @@ body{
 
 .welcome {
     text-align: left; 
-    margin-left: 10vw; 
-    margin-top: 10vh;
-    position: fixed;
+    margin-left: 12vw; 
+    margin-top: 1vh;
 }
 
 .section-name {
@@ -32,23 +31,27 @@ body{
 }
 
 h1 {
-    font-size: 9vw;
+    font-size: 7vw;
   }
   
 h2 {
-    font-size: 8vw;
+    font-size: 6vw;
 }
 
 h3 {
-    font-size: 7.5vw;
+    font-size: 5.5vw;
 }
 
 h4 {
-    font-size: 6vw;
+    font-size: 5vw;
 }
 
 h5 {
     font-size: 4vw;
+}
+
+h6{
+    font-size: 3vw;
 }
 
 .bottomsection{
