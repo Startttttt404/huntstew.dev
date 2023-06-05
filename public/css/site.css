@@ -44,6 +44,10 @@ h5 {
     font-size: 4vh;
 }
 
+h6{
+    font-size: 3vh;
+}
+
 .bottomsection{
     position: fixed;
     bottom: 0;
@@ -51,9 +55,8 @@ h5 {
 }
 
 .face {
-    height: 82vh;
-    min-width: 100%;
-    text-align: right;
+    padding-top: 10vh;
+    padding-right: 10vh;
 }
 
 .vertical-center {
@@ -73,5 +76,28 @@ h5 {
     font-size: 3vh;
     height: 75vh;
     width: 23vw;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.profile{
+    font-size: 2vh;
+    max-width: 40vw;
+    min-height: 80vh;
+}
+
+.profile-item{
+    width: 30vw;
+    min-height: 5vh;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.skills{
+    font-size: 2vh;
+    min-height: 40vh;
+
+}
+
+.skills-item{
     background-color: rgba(255, 255, 255, 0.5);
 }
