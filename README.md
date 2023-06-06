@@ -10,7 +10,7 @@ To see the website, simply go to huntstew.dev. If you want to host it yourself, 
 
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2023 Hunter Stewart
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
