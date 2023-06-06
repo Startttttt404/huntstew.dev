@@ -1,9 +1,11 @@
 Huntstew.dev
 
 Description:
+
 A simple, containerized express.js backend which routes requests for a portfolio website. Containerized with docker for easy use with google cloud run. Firebase routes requests from huntstew.dev/www.huntstew.dev to the cloud run application. By using express.js/cloud run/firebase, costs are kept to a minimum and on a "pay as you use" basis.
 
 Use:
+
 To see the website, simply go to huntstew.dev. If you want to host it yourself, for some reason, you can create a new cloud run application and use this repo to autocompile.
 
 MIT License
