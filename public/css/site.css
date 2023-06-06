@@ -94,7 +94,8 @@ h6{
 
 .skills{
     font-size: 2vh;
-    min-height: 40vh;
+    min-height: 20vh;
+    max-height: 40vh;
 
 }
 

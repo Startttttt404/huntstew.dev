@@ -39,19 +39,19 @@ h2 {
 }
 
 h3 {
-    font-size: 5.5vw;
+    font-size: 6vw;
 }
 
 h4 {
-    font-size: 5vw;
+    font-size: 6vw;
 }
 
 h5 {
-    font-size: 4vw;
+    font-size: 5vw;
 }
 
 h6{
-    font-size: 3vw;
+    font-size: 5vw;
 }
 
 .bottomsection{
@@ -61,9 +61,8 @@ h6{
 }
 
 .face {
-    position: fixed;
-    bottom: 0;
-    min-width: 100%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 .vertical-center {
     min-height: 70vh;
@@ -81,5 +80,31 @@ h6{
 .project-item{
     font-size: 3vh;
     width: 90vw;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.profile{
+    position: relative;
+    font-size: 4vw;
+    width: 95vw;
+}
+
+.profile-item{
+    min-height: 10vh;
+    width: 95vw;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.skills{
+    position: relative;
+    width: 95vw;
+    font-size: 2vh;
+    text-align: center;
+
+}
+
+.skills-item{
+    width: 95vw;
     background-color: rgba(255, 255, 255, 0.5);
 }
